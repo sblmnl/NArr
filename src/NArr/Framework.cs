@@ -12,5 +12,16 @@
         {
             global::NArr.Internals.Resize.Call(ref array, newSize);
         }
+
+        /// <summary>
+        /// Appends a collection of elements to an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to append to.</param>
+        /// <param name="collection">The collection to append.</param>
+        public void Append<T>(ref T[] array, T[] collection)
+        {
+            global::NArr.Internals.Append.Call(ref array, collection);
+        }
     }
 }
