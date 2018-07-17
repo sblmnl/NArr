@@ -50,6 +50,7 @@
     <Compile Include="AppendTests.cs" />
     <Compile Include="FindTests.cs" />
     <Compile Include="InsertTests.cs" />
+    <Compile Include="MoveTests.cs" />
     <Compile Include="NextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizeTests.cs" />

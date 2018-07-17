@@ -37,6 +37,19 @@
         }
 
         /// <summary>
+        /// Moves a collection of elements in an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to manipulate.</param>
+        /// <param name="from">The index of the first element in the desired collection.</param>
+        /// <param name="count">The number of elements in the desired collection.</param>
+        /// <param name="to">The index to which the collection will be moved.</param>
+        public void Move<T>(ref T[] array, int from, int count, int to)
+        {
+            global::NArr.Internals.Move.Call(ref array, from, count, to);
+        }
+
+        /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
         /// </summary>
         /// <typeparam name="T"></typeparam>
