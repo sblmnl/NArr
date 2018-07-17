@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Framework.cs" />
     <Compile Include="Internals\Append.cs" />
+    <Compile Include="Internals\Find.cs" />
+    <Compile Include="Internals\Next.cs" />
     <Compile Include="Internals\Resize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

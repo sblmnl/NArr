@@ -23,5 +23,30 @@
         {
             global::NArr.Internals.Append.Call(ref array, collection);
         }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to search.</param>
+        /// <param name="collection">The collection to find.</param>
+        /// <returns>Int32[]</returns>
+        public int[] Find<T>(T[] array, T[] collection)
+        {
+            return global::NArr.Internals.Find.Call(array, collection);
+        }
+
+        /// <summary>
+        /// Finds next occurrence index of a collection in an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to search.</param>
+        /// <param name="collection">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>Int32</returns>
+        public int Next<T>(T[] array, T[] collection, int index)
+        {
+            return global::NArr.Internals.Next.Call(array, collection, index);
+        }
     }
 }
