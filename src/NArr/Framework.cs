@@ -25,6 +25,18 @@
         }
 
         /// <summary>
+        /// Inserts a collection of elements into an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to insert into.</param>
+        /// <param name="collection">The collection to insert.</param>
+        /// <param name="index">The index to insert at.</param>
+        public void Insert<T>(ref T[] array, T[] collection, int index)
+        {
+            global::NArr.Internals.Insert.Call(ref array, collection, index);
+        }
+
+        /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
         /// </summary>
         /// <typeparam name="T"></typeparam>
