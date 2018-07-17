@@ -24,7 +24,9 @@
             {
                 T[] chunk = new T[collection.Length];
 
-                if (Equals(array[i], collection[0]))
+                if (Equals(array[i], collection[0])
+                    && Equals(array[i + ((collection.Length - 1) / 2)], collection[(collection.Length - 1) / 2])
+                    && Equals(array[i + (collection.Length - 1)], collection[collection.Length - 1]))
                 {
                     for (int j = 0; j < chunk.Length; j++)
                     {
