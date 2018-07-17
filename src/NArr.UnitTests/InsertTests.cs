@@ -6,7 +6,7 @@
     [TestFixture]
     public class InsertTests
     {
-        private static readonly NArr.Framework NArr = new NArr.Framework();
+        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Insert_IsExpected()
@@ -17,7 +17,7 @@
 
             int[] expected = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
-            NArr.Insert(ref array, collection, index);
+            narr.Insert(ref array, collection, index);
 
             Assert.AreEqual(expected, array);
         }
@@ -29,7 +29,7 @@
             int[] collection = { };
             int index = 1;
 
-            Assert.Throws<Exception>(() => NArr.Insert(ref array, collection, index));
+            Assert.Throws<Exception>(() => narr.Insert(ref array, collection, index));
         }
 
         [Test]
@@ -39,7 +39,7 @@
             int[] collection = { };
             int index = -1;
 
-            Assert.Throws<Exception>(() => NArr.Insert(ref array, collection, index));
+            Assert.Throws<Exception>(() => narr.Insert(ref array, collection, index));
         }
     }
 }

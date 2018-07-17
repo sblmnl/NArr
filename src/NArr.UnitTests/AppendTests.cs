@@ -5,7 +5,7 @@
     [TestFixture]
     public class AppendTests
     {
-        private static readonly NArr.Framework NArr = new NArr.Framework();
+        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Append_IsExpected()
@@ -14,7 +14,7 @@
             int[] collection = { 6, 7 };
 
             int[] expected = { 0, 1, 2, 3, 4, 5, 6, 7 };
-            NArr.Append(ref array, collection);
+            narr.Append(ref array, collection);
 
             Assert.AreEqual(expected, array);
         }

@@ -6,7 +6,7 @@
     [TestFixture]
     public class MoveTests
     {
-        private static readonly NArr.Framework NArr = new NArr.Framework();
+        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Move_IsExpected()
@@ -17,7 +17,7 @@
             int to = 5;
 
             int[] expected = { 0, 3, 4, 5, 6, 1, 2, 7 };
-            NArr.Move(ref array, from, count, to);
+            narr.Move(ref array, from, count, to);
 
             Assert.AreEqual(expected, array);
         }
@@ -30,7 +30,7 @@
             int count = 1;
             int to = 1;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -41,7 +41,7 @@
             int count = 1;
             int to = 1;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -52,7 +52,7 @@
             int count = 1;
             int to = 1;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -63,7 +63,7 @@
             int count = 1;
             int to = 2;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -74,7 +74,7 @@
             int count = 1;
             int to = -1;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -85,7 +85,7 @@
             int count = 3;
             int to = 0;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
 
         [Test]
@@ -96,7 +96,7 @@
             int count = -1;
             int to = 0;
 
-            Assert.Throws<Exception>(() => NArr.Move(ref array, from, count, to));
+            Assert.Throws<Exception>(() => narr.Move(ref array, from, count, to));
         }
     }
 }

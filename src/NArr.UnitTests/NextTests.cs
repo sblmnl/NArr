@@ -6,7 +6,7 @@
     [TestFixture]
     public class NextTests
     {
-        private static readonly NArr.Framework NArr = new NArr.Framework();
+        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Find_IsExpected()
@@ -16,7 +16,7 @@
             int index = 2;
 
             int expected = 3;
-            int result = NArr.Next(array, collection, index);
+            int result = narr.Next(array, collection, index);
 
             Assert.AreEqual(expected, result);
         }
@@ -28,7 +28,7 @@
             int[] collection = { 0 };
             int index = 0;
 
-            Assert.Throws<Exception>(() => NArr.Next(array, collection, index));
+            Assert.Throws<Exception>(() => narr.Next(array, collection, index));
         }
 
         [Test]
@@ -38,7 +38,7 @@
             int[] collection = { };
             int index = 0;
 
-            Assert.Throws<Exception>(() => NArr.Next(array, collection, index));
+            Assert.Throws<Exception>(() => narr.Next(array, collection, index));
         }
 
         [Test]
@@ -48,7 +48,7 @@
             int[] collection = { 0, 0 };
             int index = 0;
 
-            Assert.Throws<Exception>(() => NArr.Next(array, collection, index));
+            Assert.Throws<Exception>(() => narr.Next(array, collection, index));
         }
 
         [Test]
@@ -58,7 +58,7 @@
             int[] collection = { 0 };
             int index = 1;
 
-            Assert.Throws<Exception>(() => NArr.Next(array, collection, index));
+            Assert.Throws<Exception>(() => narr.Next(array, collection, index));
         }
 
         [Test]
@@ -68,7 +68,7 @@
             int[] collection = { 0 };
             int index = -1;
 
-            Assert.Throws<Exception>(() => NArr.Next(array, collection, index));
+            Assert.Throws<Exception>(() => narr.Next(array, collection, index));
         }
     }
 }

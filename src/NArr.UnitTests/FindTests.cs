@@ -6,7 +6,7 @@
     [TestFixture]
     public class FindTests
     {
-        private static readonly NArr.Framework NArr = new NArr.Framework();
+        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Find_IsExpected()
@@ -15,7 +15,7 @@
             int[] collection = { 3 };
 
             int[] expected = { 3, 4 };
-            int[] result = NArr.Find(array, collection);
+            int[] result = narr.Find(array, collection);
 
             Assert.AreEqual(expected, result);
         }
@@ -26,7 +26,7 @@
             int[] array = { };
             int[] collection = { 0 };
 
-            Assert.Throws<Exception>(() => NArr.Find(array, collection));
+            Assert.Throws<Exception>(() => narr.Find(array, collection));
         }
 
         [Test]
@@ -35,7 +35,7 @@
             int[] array = { 0 };
             int[] collection = { 0, 0 };
 
-            Assert.Throws<Exception>(() => NArr.Find(array, collection));
+            Assert.Throws<Exception>(() => narr.Find(array, collection));
         }
     }
 }
