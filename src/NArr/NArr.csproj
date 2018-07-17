@@ -47,6 +47,7 @@
     <Compile Include="Internals\Move.cs" />
     <Compile Include="Internals\Next.cs" />
     <Compile Include="Internals\Resize.cs" />
+    <Compile Include="Internals\Shift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

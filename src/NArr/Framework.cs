@@ -50,6 +50,17 @@
         }
 
         /// <summary>
+        /// Shifts the elements in an array by a certain number of indexes.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to shift.</param>
+        /// <param name="count">The number of indexes to shift by.</param>
+        public void Shift<T>(ref T[] array, int count)
+        {
+            global::NArr.Internals.Shift.Call(ref array, count);
+        }
+
+        /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
         /// </summary>
         /// <typeparam name="T"></typeparam>
