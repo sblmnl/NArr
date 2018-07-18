@@ -2,24 +2,30 @@
 {
     using System;
 
-    internal static class Find
+    internal static class Search
     {
         /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(byte[] haystack, byte[] needle)
+        public static int[] Call(byte[] haystack, byte[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -38,14 +44,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -54,17 +61,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(sbyte[] haystack, sbyte[] needle)
+        public static int[] Call(sbyte[] haystack, sbyte[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -83,14 +96,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -99,17 +113,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(bool[] haystack, bool[] needle)
+        public static int[] Call(bool[] haystack, bool[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -128,14 +148,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -144,17 +165,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(char[] haystack, char[] needle)
+        public static int[] Call(char[] haystack, char[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -173,14 +200,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -189,17 +217,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(short[] haystack, short[] needle)
+        public static int[] Call(short[] haystack, short[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -218,14 +252,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -234,17 +269,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(ushort[] haystack, ushort[] needle)
+        public static int[] Call(ushort[] haystack, ushort[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -263,14 +304,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -279,17 +321,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(int[] haystack, int[] needle)
+        public static int[] Call(int[] haystack, int[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -308,14 +356,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -324,17 +373,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(uint[] haystack, uint[] needle)
+        public static int[] Call(uint[] haystack, uint[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -353,14 +408,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -369,17 +425,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(long[] haystack, long[] needle)
+        public static int[] Call(long[] haystack, long[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -398,14 +460,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -414,17 +477,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(ulong[] haystack, ulong[] needle)
+        public static int[] Call(ulong[] haystack, ulong[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -443,14 +512,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -459,17 +529,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(float[] haystack, float[] needle)
+        public static int[] Call(float[] haystack, float[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -488,14 +564,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -504,17 +581,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(double[] haystack, double[] needle)
+        public static int[] Call(double[] haystack, double[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -533,14 +616,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -549,17 +633,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(decimal[] haystack, decimal[] needle)
+        public static int[] Call(decimal[] haystack, decimal[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -578,14 +668,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -594,17 +685,23 @@
         /// </summary>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call(string[] haystack, string[] needle)
+        public static int[] Call(string[] haystack, string[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (haystack[i] == needle[0]
                     && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
@@ -623,16 +720,18 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
+
 
         /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
@@ -640,19 +739,24 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="haystack">The array to search.</param>
         /// <param name="needle">The collection to find.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call<T>(T[] haystack, T[] needle)
+        public static int[] Call<T>(T[] haystack, T[] needle, int count = 0, int index = 0)
         {
             if (haystack.Length == 0) throw new Exception($"The length of '{nameof(haystack)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
-            if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (needle.Length > haystack.Length) throw new Exception($"The length of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
             Func<T, T, bool> compare = (x, y) => x.GetHashCode() == y.GetHashCode();
-
             int[] results = new int[haystack.Length];
-            int count = 0;
+            int size = 0;
 
-            for (int i = 0; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (compare(haystack[i], needle[0])
                     && compare(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
@@ -662,7 +766,7 @@
 
                     for (int j = 0; j < needle.Length; j++)
                     {
-                        if (!Equals(haystack[i + j], needle[j]))
+                        if (!compare(haystack[i + j], needle[j]))
                         {
                             match = false;
                             break;
@@ -671,14 +775,15 @@
 
                     if (match)
                     {
-                        results[count] = i;
+                        results[size] = i;
+                        if (results.Length == count && count != 0) break;
                         i += needle.Length - 1;
-                        count++;
+                        size++;
                     }
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
 
@@ -688,22 +793,30 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="haystack">The array to search.</param>
         /// <param name="match">The predicate for the elements to match.</param>
+        /// <param name="count">The number of elements to find, 0 for all.</param>
+        /// <param name="index">The index to begin searching from.</param>
         /// <returns>System.Int32[]</returns>
-        public static int[] Call<T>(T[] haystack, Predicate<T> match)
+        public static int[] Call<T>(T[] haystack, Predicate<T> match, int count = 0, int index = 0)
         {
-            int[] results = new int[haystack.Length];
-            int count = 0;
+            if (count < 0) throw new Exception($"The value of '{nameof(count)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (count > haystack.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {haystack.Length}", new ArgumentOutOfRangeException());
+            if (index < 0) throw new Exception($"The value of '{nameof(index)}' cannot be less than 0.", new ArgumentOutOfRangeException());
+            if (index > haystack.Length - 1) throw new Exception($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.", new ArgumentOutOfRangeException());
 
-            for (int i = 0; i < haystack.Length; i++)
+            int[] results = new int[haystack.Length];
+            int size = 0;
+
+            for (int i = index; i < haystack.Length; i++)
             {
                 if (match(haystack[i]))
                 {
-                    results[count] = i;
-                    count++;
+                    results[size] = i;
+                    if (results.Length == count && count != 0) break;
+                    size++;
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, count);
+            global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
     }

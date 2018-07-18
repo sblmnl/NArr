@@ -42,10 +42,9 @@
   <ItemGroup>
     <Compile Include="Framework.cs" />
     <Compile Include="Internals\Append.cs" />
-    <Compile Include="Internals\Find.cs" />
+    <Compile Include="Internals\Search.cs" />
     <Compile Include="Internals\Insert.cs" />
     <Compile Include="Internals\Move.cs" />
-    <Compile Include="Internals\Next.cs" />
     <Compile Include="Internals\Resize.cs" />
     <Compile Include="Internals\Shift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
