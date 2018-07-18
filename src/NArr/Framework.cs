@@ -1,4 +1,6 @@
-﻿namespace NArr
+﻿using System;
+
+namespace NArr
 {
     public class Framework
     {
@@ -63,26 +65,361 @@
         /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to search.</param>
-        /// <param name="collection">The collection to find.</param>
-        /// <returns>Int32[]</returns>
-        public int[] Find<T>(T[] array, T[] collection)
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(byte[] haystack, byte[] needle)
         {
-            return global::NArr.Internals.Find.Call(array, collection);
+            return global::NArr.Internals.Find.Call(haystack, needle);
         }
 
         /// <summary>
-        /// Finds next occurrence index of a collection in an array.
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(sbyte[] haystack, sbyte[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(bool[] haystack, bool[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(char[] haystack, char[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(short[] haystack, short[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(ushort[] haystack, ushort[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(int[] haystack, int[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(uint[] haystack, uint[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(long[] haystack, long[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(ulong[] haystack, ulong[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(float[] haystack, float[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(double[] haystack, double[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(decimal[] haystack, decimal[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find(string[] haystack, string[] needle)
+        {
+            return global::NArr.Internals.Find.Call(haystack, needle);
+        }
+
+        /// <summary>
+        /// Finds all occurrence indexes of elements matching the specified predicate condition(s) in an array.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to search.</param>
-        /// <param name="collection">The collection to find.</param>
-        /// <param name="index">The index to begin searching from.</param>
-        /// <returns>Int32</returns>
-        public int Next<T>(T[] array, T[] collection, int index)
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="match">The predicate for the elements to match.</param>
+        /// <returns>System.Int32[]</returns>
+        public int[] Find<T>(T[] haystack, Predicate<T> match)
         {
-            return global::NArr.Internals.Next.Call(array, collection, index);
+            return global::NArr.Internals.Find.Call(haystack, match);
         }
-    }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(byte[] haystack, byte[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(sbyte[] haystack, sbyte[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(bool[] haystack, bool[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(char[] haystack, char[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(short[] haystack, short[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(ushort[] haystack, ushort[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(int[] haystack, int[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(uint[] haystack, uint[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(long[] haystack, long[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(ulong[] haystack, ulong[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(float[] haystack, float[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(double[] haystack, double[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(decimal[] haystack, decimal[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="needle">The collection to find.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next(string[] haystack, string[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds the next occurrence index of a collection in an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="haystack">The collection to find.</param>
+        /// <param name="needle">The array to search.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next<T>(T[] haystack, T[] needle, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, needle, index);
+        }
+
+        /// <summary>
+        /// Finds next occurence index of an element in an array that matches the conditions of a predicate.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="haystack">The array to search.</param>
+        /// <param name="match">The conditions for an element to match.</param>
+        /// <param name="index">The index to begin searching from.</param>
+        /// <returns>System.Int32</returns>
+        public int Next<T>(T[] haystack, Predicate<T> match, int index)
+        {
+            return global::NArr.Internals.Next.Call(haystack, match, index);
+        }
+}
 }
