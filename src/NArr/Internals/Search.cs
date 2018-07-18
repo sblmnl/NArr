@@ -27,29 +27,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -79,29 +85,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -131,29 +143,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -183,29 +201,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -235,29 +259,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -287,29 +317,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -339,29 +375,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -391,29 +433,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -443,29 +491,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -495,29 +549,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -547,29 +607,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -599,29 +665,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -651,29 +723,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
@@ -703,35 +781,40 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (haystack[i] == needle[0]
-                    && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
-                    && haystack[i + (needle.Length - 1)] == needle[needle.Length - 1])
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (haystack[i] == needle[0]
+                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
+                        && haystack[last] == needle[needle.Length - 1])
                     {
-                        if (haystack[i + j] != needle[j])
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (haystack[i + j] != needle[j])
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
             return results;
         }
-
 
         /// <summary>
         /// Finds all occurrence indexes of a collection in an array.
@@ -758,29 +841,35 @@
 
             for (int i = index; i < haystack.Length; i++)
             {
-                if (compare(haystack[i], needle[0])
-                    && compare(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
-                    && compare(haystack[i + (needle.Length - 1)], needle[needle.Length - 1]))
-                {
-                    bool match = true;
+                int last = i + (needle.Length - 1);
 
-                    for (int j = 0; j < needle.Length; j++)
+                if (last < haystack.Length)
+                {
+                    if (compare(haystack[i], needle[0])
+                        && compare(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
+                        && compare(haystack[last], needle[needle.Length - 1]))
                     {
-                        if (!compare(haystack[i + j], needle[j]))
+                        bool match = true;
+
+                        for (int j = 0; j < needle.Length; j++)
                         {
-                            match = false;
-                            break;
+                            if (compare(haystack[i + j], needle[j]))
+                            {
+                                match = false;
+                                break;
+                            }
+                        }
+
+                        if (match)
+                        {
+                            results[size] = i;
+                            if (results.Length == count && count != 0) break;
+                            i += needle.Length - 1;
+                            size++;
                         }
                     }
-
-                    if (match)
-                    {
-                        results[size] = i;
-                        if (results.Length == count && count != 0) break;
-                        i += needle.Length - 1;
-                        size++;
-                    }
                 }
+                else break;
             }
 
             global::NArr.Internals.Resize.Call(ref results, size);
