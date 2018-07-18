@@ -647,14 +647,16 @@
             if (needle.Length == 0) throw new Exception($"The length of '{nameof(needle)}' cannot be 0.", new ArgumentNullException());
             if (needle.Length > haystack.Length) throw new Exception($"The size of '{nameof(needle)}' cannot be larger than that of '{nameof(haystack)}'.", new ArgumentOutOfRangeException());
 
+            Func<T, T, bool> compare = (x, y) => x.GetHashCode() == y.GetHashCode();
+
             int[] results = new int[haystack.Length];
             int count = 0;
 
             for (int i = 0; i < haystack.Length; i++)
             {
-                if (Equals(haystack[i], needle[0])
-                    && Equals(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
-                    && Equals(haystack[i + (needle.Length - 1)], needle[needle.Length - 1]))
+                if (compare(haystack[i], needle[0])
+                    && compare(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
+                    && compare(haystack[i + (needle.Length - 1)], needle[needle.Length - 1]))
                 {
                     bool match = true;
 
