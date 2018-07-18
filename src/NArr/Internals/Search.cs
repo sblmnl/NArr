@@ -32,7 +32,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -90,7 +89,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -148,7 +146,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -206,7 +203,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -264,7 +260,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -322,7 +317,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -380,7 +374,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -438,7 +431,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -496,7 +488,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -554,7 +545,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -612,7 +602,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -670,7 +659,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -728,7 +716,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -786,7 +773,6 @@
                 if (last < haystack.Length)
                 {
                     if (haystack[i] == needle[0]
-                        && haystack[i + ((needle.Length - 1) / 2)] == needle[(needle.Length - 1) / 2]
                         && haystack[last] == needle[needle.Length - 1])
                     {
                         bool match = true;
@@ -846,7 +832,6 @@
                 if (last < haystack.Length)
                 {
                     if (compare(haystack[i], needle[0])
-                        && compare(haystack[i + ((needle.Length - 1) / 2)], needle[(needle.Length - 1) / 2])
                         && compare(haystack[last], needle[needle.Length - 1]))
                     {
                         bool match = true;
