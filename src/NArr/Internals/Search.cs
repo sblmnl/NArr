@@ -22,43 +22,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -80,43 +81,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -138,43 +140,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -196,43 +199,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -254,43 +258,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -312,43 +317,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -370,43 +376,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -428,43 +435,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -486,43 +494,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -544,43 +553,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -602,43 +612,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -660,43 +671,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -718,43 +730,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
                         && haystack[last] == needle[needle.Length - 1])
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -776,43 +789,44 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (haystack[i] == needle[0]
-                        && haystack[last] == needle[needle.Length - 1])
+                    if (haystack[i] == needle[0]                        // filter most possible non-matches
+                        && haystack[last] == needle[needle.Length - 1]) 
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (haystack[i + j] != needle[j])
+                            if (haystack[i + j] != needle[j])           // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -836,43 +850,44 @@
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
             Func<T, T, bool> compare = (x, y) => x.GetHashCode() == y.GetHashCode();
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                               // store the result indexes
+            int size = 0;                                               // keep track of the true size of the results array
+            int last;                                                   // store the current index in the haystack of the last element in the needle
+            bool match = true;                                          // keep track of whether or not a chunk is a match or not
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)               // loop through the haystack starting at the specified index
             {
-                int last = i + (needle.Length - 1);
+                last = i + (needle.Length - 1);                         // calculate the current index in the haystack of the last element in the needle
 
-                if (last < haystack.Length)
+                if (last < haystack.Length)                             // verify that a needle will fit between the current index and the end of the haystack
                 {
-                    if (compare(haystack[i], needle[0])
-                        && compare(haystack[last], needle[needle.Length - 1]))
+                    if (compare(haystack[i], needle[0])                 // filter most possible non-matches
+                        && compare(haystack[last], needle[needle.Length - 1])) 
                     {
-                        bool match = true;
-
-                        for (int j = 0; j < needle.Length; j++)
+                        for (int j = 0; j < needle.Length; j++)         // loop through the needle
                         {
-                            if (compare(haystack[i + j], needle[j]))
+                            if (compare(haystack[i + j], needle[j]))    // verify that the current haystack element matches the corresponding element in the needle
                             {
                                 match = false;
-                                break;
+                                break;                                  // if not a match then break and move to next iteration
                             }
                         }
 
                         if (match)
                         {
-                            results[size] = i;
-                            if (results.Length == count && count != 0) break;
-                            i += needle.Length - 1;
-                            size++;
-                            if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                            results[size] = i;                                                  // add result index to the results array
+                            if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                            i += needle.Length - 1;                                             // set i to the index after the needle for the next iteration
+                            size++;                                                             // add 1 to the true size to accomodate for a new match 
+                            if (size > results.Length)
+                                global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                         }
                     }
                 }
                 else break;
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);    // resize the results array to the true size
             return results;
         }
 
@@ -893,21 +908,22 @@
             if (index < 0) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be less than 0.");
             if (index > haystack.Length - 1) throw new ArgumentOutOfRangeException($"The value of '{nameof(index)}' cannot be greater than {haystack.Length - 1}.");
 
-            int[] results = new int[100];
-            int size = 0;
+            int[] results = new int[100];                           // store the result indexes
+            int size = 0;                                           // keep track of the true size of the results array
 
-            for (int i = index; i < haystack.Length; i++)
+            for (int i = index; i < haystack.Length; i++)                               // loop through the haystack starting at the specified index
             {
-                if (match(haystack[i]))
+                if (match(haystack[i]))                                                 // verify the the current haystack element matches the specified condition(s)
                 {
-                    results[size] = i;
-                    if (results.Length == count && count != 0) break;
-                    size++;
-                    if (size > results.Length) global::NArr.Internals.Resize.Call(ref results, size + 100);
+                    results[size] = i;                                                  // add result index to the results array
+                    if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
+                    size++;                                                             // add 1 to the true size to accomodate for a new match 
+                    if (size > results.Length)
+                        global::NArr.Internals.Resize.Call(ref results, size + 100);    // MEMORY OPTIMIZATION: increase results array capacity by 100 elements if the true size is greater than the results array length
                 }
             }
 
-            global::NArr.Internals.Resize.Call(ref results, size);
+            global::NArr.Internals.Resize.Call(ref results, size);  // resize the results array to the true size
             return results;
         }
     }
