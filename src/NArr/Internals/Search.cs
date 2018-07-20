@@ -913,7 +913,7 @@
 
             for (int i = index; i < haystack.Length; i++)                               // loop through the haystack starting at the specified index
             {
-                if (match(haystack[i]))                                                 // verify the the current haystack element matches the specified condition(s)
+                if (match(haystack[i]))                                                 // verify that the current haystack element matches the specified condition(s)
                 {
                     results[size] = i;                                                  // add result index to the results array
                     if (results.Length == count && count != 0) break;                   // if results array length is equal to the specified count and count is not 0 then break and return results
