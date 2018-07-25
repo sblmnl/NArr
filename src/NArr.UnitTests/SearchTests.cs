@@ -17,9 +17,7 @@
             int[] expected = { 3 };
             int[] actual = narr.Search(
                 haystack: haystack,
-                needle: needle,
-                count: 1,
-                index: 0);
+                needle: needle);
             Assert.AreEqual(expected, actual);
         }
 
@@ -39,7 +37,7 @@
         {
             int[] haystack = { };
             int[] needle = { 0 };
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle));
+            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, needle));
         }
 
         [Test]
@@ -47,7 +45,7 @@
         {
             int[] haystack = { 0 };
             int[] needle = { };
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle));
+            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, needle));
         }
 
         [Test]
@@ -55,7 +53,7 @@
         {
             int[] haystack = { 0 };
             int[] needle = { 0, 0 };
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle));
+            Assert.Throws<ArgumentException>(() => narr.Search(haystack, needle));
         }
 
         [Test]
@@ -64,7 +62,7 @@
             int[] haystack = { 0 };
             int[] needle = { 0 };
             int count = -1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count));
         }
 
         [Test]
@@ -73,7 +71,7 @@
             int[] haystack = { 0 };
             int[] needle = { 0 };
             int count = 2;
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count));
         }
 
         [Test]
@@ -83,7 +81,7 @@
             int[] needle = { 0 };
             int count = 0;
             int index = -1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count, index));
         }
 
         [Test]
@@ -93,7 +91,15 @@
             int[] needle = { 0 };
             int count = 0;
             int index = 1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, needle, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count, index));
+        }
+
+        [Test]
+        public void Search_ConditionSearch_EmptyArray()
+        {
+            int[] haystack = { };
+            Predicate<int> match = x => x == 0;
+            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, match));
         }
 
         [Test]
@@ -102,7 +108,7 @@
             int[] haystack = { 0 };
             Predicate<int> match = x => x == 0;
             int count = -1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, match, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count));
         }
 
         [Test]
@@ -111,7 +117,7 @@
             int[] haystack = { 0 };
             Predicate<int> match = x => x == 0;
             int count = 2;
-            Assert.Throws<Exception>(() => narr.Search(haystack, match, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count));
         }
 
         [Test]
@@ -121,7 +127,7 @@
             Predicate<int> match = x => x == 0;
             int count = 0;
             int index = -1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, match, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count, index));
         }
 
         [Test]
@@ -131,7 +137,7 @@
             Predicate<int> match = x => x == 0;
             int count = 0;
             int index = 1;
-            Assert.Throws<Exception>(() => narr.Search(haystack, match, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count, index));
         }
     }
 }
