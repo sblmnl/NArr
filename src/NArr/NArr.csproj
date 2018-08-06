@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Framework.cs" />
     <Compile Include="Internals\Append.cs" />
+    <Compile Include="Internals\Remove.cs" />
     <Compile Include="Internals\Search.cs" />
     <Compile Include="Internals\Insert.cs" />
     <Compile Include="Internals\Move.cs" />

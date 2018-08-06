@@ -271,5 +271,17 @@ namespace NArr
         {
             return global::NArr.Internals.Search.Call(haystack, match, count, index);
         }
+
+        /// <summary>
+        /// Removes a collection of elements from an array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to manipulate.</param>
+        /// <param name="count">The number of elements to remove.</param>
+        /// <param name="index">The index of the first element in the desired collection to be removed.</param>
+        public void Remove<T>(ref T[] array, int count, int index)
+        {
+            global::NArr.Internals.Remove.Call(ref array, count, index);
+        }
     }
 }

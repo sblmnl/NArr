@@ -51,6 +51,7 @@
     <Compile Include="InsertTests.cs" />
     <Compile Include="MoveTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveTests.cs" />
     <Compile Include="ResizeTests.cs" />
     <Compile Include="SearchTests.cs" />
     <Compile Include="ShiftTests.cs" />
