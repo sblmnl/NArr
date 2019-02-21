@@ -283,5 +283,29 @@ namespace NArr
         {
             global::NArr.Internals.Remove.Call(ref array, count, index);
         }
+
+
+        /// <summary>
+        /// Divides an array into fragments of a maximum desired size.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to fragment.</param>
+        /// <param name="size">The maximum desired size of each fragment.</param>
+        /// <returns>T[][]</returns>
+        public T[][] Fragment<T>(T[] array, int size)
+        {
+            return global::NArr.Internals.Fragment.Call(array, size);
+        }
+
+        /// <summary>
+        /// Reconstructs a collection of fragments into its original array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fragments">The collections of fragments to be reconstructed.</param>
+        /// <returns>T[]</returns>
+        public T[] Defragment<T>(T[][] fragments)
+        {
+            return global::NArr.Internals.Defragment.Call(fragments);
+        }
     }
 }

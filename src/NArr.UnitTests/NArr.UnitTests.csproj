@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppendTests.cs" />
+    <Compile Include="DefragmentTests.cs" />
+    <Compile Include="FragmentTests.cs" />
     <Compile Include="InsertTests.cs" />
     <Compile Include="MoveTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
