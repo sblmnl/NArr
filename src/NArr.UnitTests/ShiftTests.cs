@@ -1,13 +1,12 @@
 ﻿namespace UnitTests
 {
-    using System;
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class ShiftTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
-
         [Test]
         public void Shift_IsExpected()
         {
@@ -15,7 +14,7 @@
             int count = 3;
 
             int[] expected = { 5, 6, 7, 0, 1, 2, 3, 4 };
-            narr.Shift(ref array, count);
+            NArr.Shift(ref array, count);
 
             Assert.AreEqual(expected, array);
         }
@@ -24,9 +23,9 @@
         public void Shift_EmptyArray()
         {
             int[] array = { };
-            int count = 0;
+            int count = 1;
 
-            Assert.Throws<Exception>(() => narr.Shift(ref array, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Shift(ref array, count));
         }
 
         [Test]
@@ -35,7 +34,7 @@
             int[] array = { 0, 0 };
             int count = -3;
 
-            Assert.Throws<Exception>(() => narr.Shift(ref array, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Shift(ref array, count));
         }
 
         [Test]
@@ -44,7 +43,7 @@
             int[] array = { 0, 0 };
             int count = 3;
 
-            Assert.Throws<Exception>(() => narr.Shift(ref array, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Shift(ref array, count));
         }
     }
 }

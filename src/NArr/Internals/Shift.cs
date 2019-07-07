@@ -10,14 +10,8 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="array">The array to shift.</param>
         /// <param name="count">The number of indexes to shift by.</param>
-        public static void Call<T>(ref T[] array, int count)
+        private static void SafeCall<T>(ref T[] array, int count)
         {
-            if (array.Length == 0) throw new Exception($"The length of '{nameof(array)}' cannot be 0.", new ArgumentNullException());
-            if (count < (array.Length * -1)) throw new Exception($"The value of '{nameof(count)}' cannot be less than {array.Length * -1}.", new ArgumentOutOfRangeException());
-            if (count > array.Length) throw new Exception($"The value of '{nameof(count)}' cannot be greater than {array.Length}.", new ArgumentOutOfRangeException());
-            if (count == 0 || count == array.Length || count == array.Length * -1 || array.Length == 1) return;
-            if (count < 0) count = (array.Length - (count * -1));
-
             T[] result = new T[array.Length];
 
             int current = 0;
@@ -35,6 +29,37 @@
             }
 
             array = result;
+        }
+
+        /// <summary>
+        /// Shifts the elements in an array by a certain number of indexes.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array">The array to shift.</param>
+        /// <param name="count">The number of indexes to shift by.</param>
+        /// <exception cref="ArgumentNullException">array</exception>
+        /// <exception cref="ArgumentException">array</exception>
+        /// <exception cref="ArgumentOutOfRangeException">count</exception>
+        public static void Call<T>(ref T[] array, int count)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array), "Argument value is null");
+            }
+            if (count < (array.Length * -1) || count > array.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), "Argument value is outside the bounds of the array");
+            }
+            if (count < 0)
+            {
+                count = (array.Length - (count * -1));
+            }
+            if (count == 0 || count == array.Length || count == array.Length * -1 || array.Length == 1)
+            {
+                return;
+            }
+
+            SafeCall(ref array, count);
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿namespace UnitTests
 {
-    using System;
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class RemoveTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
-
         [Test]
         public void Remove_IsExpected()
         {
@@ -16,7 +15,7 @@
             int index = 1;
 
             int[] expected = { 0 };
-            narr.Remove(ref array, count, index);
+            NArr.Remove(ref array, count, index);
 
             Assert.AreEqual(expected, array);
         }
@@ -25,10 +24,10 @@
         public void Remove_EmptyArray()
         {
             int[] array = { };
-            int count = 1;
+            int count = 0;
             int index = 0;
 
-            Assert.Throws<ArgumentNullException>(() => narr.Remove(ref array, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Remove(ref array, count, index));
         }
 
         [Test]
@@ -38,7 +37,7 @@
             int count = -1;
             int index = 0;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Remove(ref array, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Remove(ref array, count, index));
         }
 
         [Test]
@@ -48,7 +47,7 @@
             int count = 2;
             int index = 0;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Remove(ref array, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Remove(ref array, count, index));
         }
 
         [Test]
@@ -58,7 +57,7 @@
             int count = 1;
             int index = -1;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Remove(ref array, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Remove(ref array, count, index));
         }
 
         [Test]
@@ -68,7 +67,7 @@
             int count = 1;
             int index = 1;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Remove(ref array, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Remove(ref array, count, index));
         }
     }
 }

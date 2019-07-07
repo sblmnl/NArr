@@ -1,13 +1,12 @@
 ﻿namespace UnitTests
 {
-    using System;
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class SearchTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
-
         [Test]
         public void Search_TypeSearch_IsExpected()
         {
@@ -15,9 +14,8 @@
             int[] needle = { 3 };
 
             int[] expected = { 3 };
-            int[] actual = narr.Search(
-                haystack: haystack,
-                needle: needle);
+            int[] actual = haystack.Search(needle);
+
             Assert.AreEqual(expected, actual);
         }
 
@@ -25,35 +23,36 @@
         public void Search_ConditionSearch_IsExpected()
         {
             int[] haystack = { 0, 1, 2, 3, 3, 4, 5, 6, 7 };
-            Predicate<int> match = x => x == 3;
+            Func<int, bool> match = x => x == 3;
 
             int[] expected = { 3, 4 };
-            int[] actual = narr.Search(haystack, match);
+            int[] actual = haystack.Search(match);
+
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void Search_TypeSearch_EmptyArray()
+        public void Search_TypeSearch_EmptyNeedle()
         {
-            int[] haystack = { };
-            int[] needle = { 0 };
-            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, needle));
-        }
-
-        [Test]
-        public void Search_TypeSearch_EmptyCollection()
-        {
-            int[] haystack = { 0 };
+            int[] haystack = { 0, 1, 2, 3, 4, 5, 6, 7 };
             int[] needle = { };
-            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, needle));
+
+            int[] expected = { };
+            int[] actual = haystack.Search(needle);
+
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void Search_TypeSearch_CollectionIsTooLarge()
+        public void Search_TypeSearch_NeedleIsTooLarge()
         {
             int[] haystack = { 0 };
             int[] needle = { 0, 0 };
-            Assert.Throws<ArgumentException>(() => narr.Search(haystack, needle));
+
+            int[] expected = { };
+            int[] actual = haystack.Search(needle);
+
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -62,7 +61,8 @@
             int[] haystack = { 0 };
             int[] needle = { 0 };
             int count = -1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(needle, count));
         }
 
         [Test]
@@ -71,7 +71,8 @@
             int[] haystack = { 0 };
             int[] needle = { 0 };
             int count = 2;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(needle, count));
         }
 
         [Test]
@@ -81,7 +82,8 @@
             int[] needle = { 0 };
             int count = 0;
             int index = -1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count, index));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(needle, count, index));
         }
 
         [Test]
@@ -91,53 +93,46 @@
             int[] needle = { 0 };
             int count = 0;
             int index = 1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, needle, count, index));
-        }
 
-        [Test]
-        public void Search_ConditionSearch_EmptyArray()
-        {
-            int[] haystack = { };
-            Predicate<int> match = x => x == 0;
-            Assert.Throws<ArgumentNullException>(() => narr.Search(haystack, match));
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(needle, count, index));
         }
 
         [Test]
         public void Search_ConditionSearch_CountIsTooSmall()
         {
             int[] haystack = { 0 };
-            Predicate<int> match = x => x == 0;
+            Func<int, bool> match = x => x == 0;
             int count = -1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(match, count));
         }
 
         [Test]
         public void Search_ConditionSearch_CountIsTooLarge()
         {
             int[] haystack = { 0 };
-            Predicate<int> match = x => x == 0;
+            Func<int, bool> match = x => x == 0;
             int count = 2;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count));
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(match, count));
         }
 
         [Test]
         public void Search_ConditionSearch_IndexIsTooSmall()
         {
             int[] haystack = { 0 };
-            Predicate<int> match = x => x == 0;
+            Func<int, bool> match = x => x == 0;
             int count = 0;
             int index = -1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(match, count, index));
         }
 
         [Test]
         public void Search_ConditionSearch_IndexIsTooLarge()
         {
             int[] haystack = { 0 };
-            Predicate<int> match = x => x == 0;
+            Func<int, bool> match = x => x == 0;
             int count = 0;
             int index = 1;
-            Assert.Throws<ArgumentOutOfRangeException>(() => narr.Search(haystack, match, count, index));
+            Assert.Throws<ArgumentOutOfRangeException>(() => haystack.Search(match, count, index));
         }
     }
 }

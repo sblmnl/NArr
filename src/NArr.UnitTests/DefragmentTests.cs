@@ -1,11 +1,12 @@
 ﻿namespace UnitTests
 {
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     class DefragmentTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
 
         [Test]
         public void Defragment_IsExpected()
@@ -16,10 +17,18 @@
                 new int[1]
             };
 
-            int[] actual = narr.Defragment(fragments);
+            int[] actual = fragments.Defragment();
             int[] expected = new int[513];
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Defragment_NullArray()
+        {
+            int[][] fragments = null;
+
+            Assert.Throws<ArgumentNullException>(() => fragments.Defragment());
         }
     }
 }

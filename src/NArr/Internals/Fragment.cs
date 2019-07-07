@@ -5,17 +5,13 @@ namespace NArr.Internals
     internal static class Fragment
     {
         /// <summary>
-        /// Divides an array into fragments of a maximum desired size.
+        /// Divides an array into fragments of a maximum desired size
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to fragment.</param>
-        /// <param name="size">The maximum desired size of each fragment.</param>
-        /// <returns>T[][]</returns>
-        public static T[][] Call<T>(T[] array, int size)
+        /// <typeparam name="T">The element type of the array</typeparam>
+        /// <param name="array">The array to fragment</param>
+        /// <param name="size">The maximum desired size of each fragment</param>
+        private static T[][] SafeCall<T>(T[] array, int size)
         {
-            if (array.Length == 0) return new T[0][];
-            if (size < 1) throw new ArgumentException($"The value of '{nameof(size)}' cannot be less than 1.");
-
             int fragment_count = array.Length / size;
             if ((double)array.Length / size > fragment_count) fragment_count++;
 
@@ -54,6 +50,32 @@ namespace NArr.Internals
             }
 
             return fragments;
+        }
+
+        /// <summary>
+        /// Divides an array into fragments of a maximum desired size
+        /// </summary>
+        /// <typeparam name="T">The element type of the array</typeparam>
+        /// <param name="array">The array to fragment</param>
+        /// <param name="size">The maximum desired size of each fragment</param>
+        /// <exception cref="ArgumentNullException">array</exception>
+        /// <exception cref="ArgumentOutOfRangeException">size</exception>
+        public static T[][] Call<T>(T[] array, int size)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array), "Argument value is null");
+            }
+            if (size > array.Length || size < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(size), "Argument value is outside the bounds of the array");
+            }
+            if (array.Length == 0)
+            {
+                return new T[][] { };
+            }
+
+            return SafeCall(array, size);
         }
     }
 }

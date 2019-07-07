@@ -7,14 +7,11 @@
         /// <summary>
         /// Resizes an array.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">array</typeparam>
         /// <param name="array">The array to resize.</param>
         /// <param name="newSize">The desired size of the array.</param>
-        public static void Call<T>(ref T[] array, int newSize)
+        private static void SafeCall<T>(ref T[] array, int newSize)
         {
-            if (array.Length == newSize) return;
-            if (newSize < 0) throw new Exception($"The value of '{nameof(newSize)}' cannot be less than 0.");
-
             T[] result = new T[newSize];
 
             if (newSize > array.Length)
@@ -33,6 +30,32 @@
             }
 
             array = result;
+        }
+
+        /// <summary>
+        /// Resizes an array.
+        /// </summary>
+        /// <typeparam name="T">array</typeparam>
+        /// <param name="array">The array to resize.</param>
+        /// <param name="newSize">The desired size of the array.</param>
+        /// <exception cref="ArgumentNullException">array</exception>
+        /// <exception cref="ArgumentOutOfRangeException">array</exception>
+        public static void Call<T>(ref T[] array, int newSize)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array), "Argument value is null");
+            }
+            if (newSize < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(newSize), "Argument value is outside the bounds of the array");
+            }
+            if (array.Length == newSize)
+            {
+                return;
+            }
+
+            SafeCall(ref array, newSize);
         }
     }
 }

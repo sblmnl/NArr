@@ -1,20 +1,19 @@
 ﻿namespace UnitTests
 {
-    using System;
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     class FragmentTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
-
         [Test]
         public void Fragment_IsExpected()
         {
             int[] array = new int[513];
             int size = 256;
 
-            int[][] actual = narr.Fragment(array, size);
+            int[][] actual = array.Fragment(size);
             int[][] expected = {
                 new int[256],
                 new int[256],
@@ -25,12 +24,30 @@
         }
 
         [Test]
-        public void Fragment_SizeIsTooSmall()
+        public void Fragment_NullArray()
         {
-            int[] array = new int[8];
+            int[] array = null;
+            int size = 256;
+
+            Assert.Throws<ArgumentNullException>(() => array.Fragment(size));
+        }
+
+        [Test]
+        public void Fragment_SizeTooLarge()
+        {
+            int[] array = new int[10];
+            int size = 11;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.Fragment(size));
+        }
+
+        [Test]
+        public void Fragment_SizeTooSmall()
+        {
+            int[] array = new int[10];
             int size = 0;
 
-            Assert.Throws<ArgumentException>(() => narr.Fragment(array, size));
+            Assert.Throws<ArgumentOutOfRangeException>(() => array.Fragment(size));
         }
     }
 }

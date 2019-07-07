@@ -1,13 +1,12 @@
 ﻿namespace UnitTests
 {
-    using System;
+    using NArr;
     using NUnit.Framework;
+    using System;
 
     [TestFixture]
     public class ResizeTests
     {
-        private static readonly NArr.Framework narr = new NArr.Framework();
-
         [Test]
         public void Resize_IncreaseSize_IsExpected()
         {
@@ -15,7 +14,7 @@
             int newSize = 9;
 
             int[] expected = { 0, 1, 2, 3, 4, 5, 6, 7, 0 };
-            narr.Resize(ref array, newSize);
+            NArr.Resize(ref array, newSize);
 
             Assert.AreEqual(expected, array);
         }
@@ -27,9 +26,18 @@
             int newSize = 7;
 
             int[] expected = { 0, 1, 2, 3, 4, 5, 6 };
-            narr.Resize(ref array, newSize);
+            NArr.Resize(ref array, newSize);
 
             Assert.AreEqual(expected, array);
+        }
+
+        [Test]
+        public void Resize_NullArray()
+        {
+            int[] array = null;
+            int newSize = 1;
+
+            Assert.Throws<ArgumentNullException>(() => NArr.Resize(ref array, newSize));
         }
 
         [Test]
@@ -38,7 +46,18 @@
             int[] array = { 0 };
             int newSize = -1;
 
-            Assert.Throws<Exception>(() => narr.Resize(ref array, newSize));
+            Assert.Throws<ArgumentOutOfRangeException>(() => NArr.Resize(ref array, newSize));
+        }
+
+        public void Resize_ArrayLengthEqualsNewSize()
+        {
+            int[] array = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            int newSize = 8;
+
+            int[] expected = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            NArr.Resize(ref array, newSize);
+
+            Assert.AreEqual(expected, array);
         }
     }
 }
