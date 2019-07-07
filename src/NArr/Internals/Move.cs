@@ -5,13 +5,13 @@
     internal static class Move
     {
         /// <summary>
-        /// Moves a collection of elements in an array.
+        /// Moves a collection of elements in an array
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to manipulate.</param>
-        /// <param name="from">The index of the first element in the desired collection.</param>
-        /// <param name="count">The number of elements in the desired collection.</param>
-        /// <param name="to">The index to which the collection will be moved.</param>
+        /// <param name="array">The array to manipulate</param>
+        /// <param name="from">The index of the first element in the desired collection</param>
+        /// <param name="count">The number of elements in the desired collection</param>
+        /// <param name="to">The index to which the collection will be moved</param>
         private static void SafeCall<T>(ref T[] array, int from, int count, int to)
         {
             T[] result = new T[array.Length];
@@ -38,13 +38,13 @@
         }
 
         /// <summary>
-        /// Moves a collection of elements in an array.
+        /// Moves a collection of elements in an array
         /// </summary>
         /// <typeparam name="T">array</typeparam>
-        /// <param name="array">The array to manipulate.</param>
-        /// <param name="from">The index of the first element in the desired collection.</param>
-        /// <param name="count">The number of elements in the desired collection.</param>
-        /// <param name="to">The index to which the collection will be moved.</param>
+        /// <param name="array">The array to manipulate</param>
+        /// <param name="from">The index of the first element in the desired collection</param>
+        /// <param name="count">The number of elements in the desired collection</param>
+        /// <param name="to">The index to which the collection will be moved</param>
         /// <exception cref="ArgumentNullException">array</exception>
         /// <exception cref="ArgumentException">array</exception>
         /// <exception cref="ArgumentOutOfRangeException">from</exception>

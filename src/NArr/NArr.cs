@@ -201,5 +201,20 @@
         {
             return Internals.Defragment.Call(fragments);
         }
+
+        /// <summary>
+        /// Selects a range of elements from an array
+        /// </summary>
+        /// <typeparam name="T">The element type of the array</typeparam>
+        /// <param name="array">The array to select from</param>
+        /// <param name="from">The index to start selecting from</param>
+        /// <param name="to">The index to stop selecting at</param>
+        /// <exception cref="ArgumentNullException">array</exception>
+        /// <exception cref="ArgumentOutOfRangeException">from</exception>
+        /// <exception cref="ArgumentOutOfRangeException">to</exception>
+        public static T[] Select<T>(this T[] array, int from, int to)
+        {
+            return Internals.Select.Call(array, from, to);
+        }
     }
 }

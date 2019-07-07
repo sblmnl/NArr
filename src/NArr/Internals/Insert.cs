@@ -5,12 +5,12 @@
     internal static class Insert
     {
         /// <summary>
-        /// Inserts a collection of elements into an array.
+        /// Inserts a collection of elements into an array
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to insert into.</param>
-        /// <param name="collection">The collection to insert.</param>
-        /// <param name="index">The index to insert at.</param>
+        /// <typeparam name="T">The element type of the array and collection</typeparam>
+        /// <param name="array">The array to insert into</param>
+        /// <param name="collection">The collection to insert</param>
+        /// <param name="index">The index to insert at</param>
         private static void SafeCall<T>(ref T[] array, T[] collection, int index)
         {
             Resize.Call(ref array, array.Length + collection.Length);
@@ -37,10 +37,10 @@
         /// <summary>
         /// Inserts a collection of elements into an array.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="array">The array to insert into.</param>
-        /// <param name="collection">The collection to insert.</param>
-        /// <param name="index">The index to insert at.</param>
+        /// <typeparam name="T">The element type of the array and collection</typeparam>
+        /// <param name="array">The array to insert into</param>
+        /// <param name="collection">The collection to insert</param>
+        /// <param name="index">The index to insert at</param>
         /// <exception cref="ArgumentNullException">array</exception>
         /// <exception cref="ArgumentNullException">collection</exception>
         /// <exception cref="ArgumentOutOfRangeException">index</exception>
